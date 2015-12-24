@@ -106,6 +106,8 @@ module Elasticsearch
       # @option arguments [Number] :suggest_size How many suggestions to return in response
       # @option arguments [Text] :suggest_text The source text for which the suggestions should be returned
       # @option arguments [Time] :timeout Explicit operation timeout
+      # @option arguments [Boolean] :track_scores By setting track_scores to true, scores will be computed and 
+      #                                           tracked while sorting on a field.
       # @option arguments [Boolean] :version Specify whether to return document version as part of a hit
       #
       # @return [Hash]
@@ -149,7 +151,8 @@ module Elasticsearch
           :suggest_size,
           :suggest_text,
           :timeout,
-          :version ]
+          :track_scores,
+          :version]
 
         method = HTTP_GET
         path   = Utils.__pathify( Utils.__listify(arguments[:index]), Utils.__listify(arguments[:type]), UNDERSCORE_SEARCH )
